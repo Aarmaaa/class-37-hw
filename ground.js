@@ -16,9 +16,9 @@ class Ground {
 
     rectMode(CENTER);
 
-    fill("pink");
+    fill("brown");
     
-    rect(pos.x, pos.y, this.width, this.height);
+    rect(this.body.position.x,this.body.position.y, this.width, this.height);
     
     pop()
     }
