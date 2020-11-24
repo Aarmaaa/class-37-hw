@@ -1,47 +1,35 @@
-const Engine = Matter.Engine;
-const World = Matter.World;
-const Bodies = Matter.Bodies;
-const Body = Matter.Body;
+const Engine=Matter.Engine;
+const World= Matter.World;
+const Bodies= Matter.Bodies;
+const Body= Matter.Body;
 
-
-	var player,ground
-
+var player,ground
 
 function setup() {
-	createCanvas(800,600);
-
-	engine = Engine.create();
-	world = engine.world;
-
-	//Create the Bodies Here.
-
-	ground=new Ground(200,300,80000,30)
-
-
-	player=Matter.Bodies.rectangle(300,10,50,50)
-	Matter.World.add(world,player)
-
-	
-	Engine.run(engine);
-	world.gravity.y=2
+  createCanvas(800,600);
   
-}
+  engine=Matter.Engine.create();
+  world=engine.world;
 
+  ground=new Ground(400,600,800,30)
+
+  player=Bodies.rectangle(300,550,50,50)
+  World.add(world,player)
+
+}
 
 function draw() {
-  rectMode(CENTER);
-  background(224);
+  background(225)
+  Matter.Engine.update(engine)
+  rectMode(CENTER)
+  rect(player.position.x,player.position.y,50,50)
   
-ground.display()
+  if(keyDown("LEFT_ARROW")){
+    player.position.x=player.position.x-2
+    console.log(player)
+  }
 
 
-
-rectMode(CENTER)
-rect(player.position.x,player.position.y,50,50)
-
-
-drawSprites();
+  ground.displace()
+  //world.gravity.y=2
 }
-
-
-
